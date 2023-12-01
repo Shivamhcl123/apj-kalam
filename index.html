@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chameleon</title>
+    <title>chameleon_test</title>
 </head>
 <body>
     <link rel="stylesheet" href="chameleon.css">
@@ -27,6 +27,325 @@
             <g>
               <g>
                 <path
+
+
+
+
+                    .color {
+    animation: col 25s linear infinite;
+  }
+  
+  @keyframes col {
+    0%,
+    100% {
+      fill: #ff0000;
+      /* red */
+    }
+    33% {
+      fill: #ffc000;
+      /* gold */
+    }
+    66% {
+      fill: #20b91b;
+      /* green */
+    }
+  }
+  
+  .eyeball {
+    animation: eye 20s linear infinite alternate;
+  }
+  
+  @keyframes eye {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+  
+    20% {
+      transform: translate(1px, -1px);
+    }
+  
+    40% {
+      transform: translate(-1px, -1px);
+    }
+  
+    60% {
+      transform: translate(1px, 0);
+    }
+  
+    80% {
+      transform: translate(0, -1px);
+    }
+  }
+  
+  /* CSS + animation for dark mode theme */
+  .rocket {
+    position: absolute;
+    z-index: -1;
+    animation: rock 20s infinite;
+    height: 125px;
+    width: 125px;
+  }
+  
+  @keyframes rock {
+    0% {
+      right: 0;
+      top: 25%;
+      opacity: 0;
+      transform: scale(0.1) rotate(-50deg);
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1) rotate(-55deg);
+      opacity: 1;
+    }
+    70% {
+      transform: scale(0.1) rotate(-60deg);
+    }
+    100% {
+      right: 90%;
+      top: 80%;
+      opacity: 0;
+    }
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    html {
+      background: #000000;
+      background-image: url("https://upload.wikimedia.org/wikipedia/commons/c/c3/Spruce-knob-night-sky-1_ForestWander.jpg");
+      background-size: cover;
+    }
+  
+    .rocket_container {
+      width: 100%;
+    }
+  
+    .rocket {
+      display: block;
+    }
+  
+    .butterfly {
+      display: none;
+    }
+  }
+  
+  /* Butterfly in the sky */
+  .butterfly_container {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform-origin: 100% 100%;
+    transform-style: preserve-3d;
+    animation: rotatingY 10s linear infinite;
+  
+    var {
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      width: 100px;
+      height: 100px;
+      margin-left: -100px / 2;
+      margin-top: -100px / 2;
+      transform-style: preserve-3d;
+  
+      &.rotate3d {
+        transform: rotate3d(1, 0.5, 0, 70deg);
+      }
+  
+      &.translate3d {
+        transform: translate3d(-500px, 0px, 0px);
+      }
+  
+      &.translate3d-1 {
+        animation: fluttering 20s ease-in-out infinite;
+      }
+    }
+  
+    figure.butterfly {
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      width: 100px;
+      height: 100px;
+      margin-left: -50px;
+      margin-top: -50px;
+      transform-style: preserve-3d;
+      .wing {
+        position: absolute;
+        width: 50px;
+        height: 100px;
+        transform-style: preserve-3d;
+        transform-origin: 50% 50%;
+  
+        &.right {
+          transform-origin: 50px 0px;
+          animation: right-wing-flap 0.75s ease-in-out infinite;
+        }
+  
+        &.left {
+          transform-origin: 50px 50px;
+          animation: left-wing-flap 0.75s ease-in-out infinite;
+        }
+  
+        use {
+          display: block;
+          fill: url(#image);
+          stroke: #000000;
+          stroke-width: 10px;
+        }
+      }
+    }
+  }
+  
+  .svg-defs {
+    position: absolute;
+    top: 0;
+  }
+  
+  @keyframes rotating {
+    0% {
+      transform: rotate3d(0, 0, 0, 0deg);
+    }
+  
+    100% {
+      transform: rotate3d(0, 1, 0, 720deg);
+    }
+  }
+  
+  @keyframes rotatingY {
+    100% {
+      transform: rotateY(-360deg);
+    }
+  }
+  
+  @keyframes fluttering {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  
+    10%,
+    60% {
+      transform: translate3d(0, 150px, 0);
+    }
+  
+    30%,
+    80% {
+      transform: translate3d(0, 50px, 0);
+    }
+  }
+  
+  @keyframes left-wing-flap {
+    0% {
+      transform: translate3d(0, 0, 0) scaleX(1) rotate3d(0, 1, 0, 60deg);
+    }
+  
+    50% {
+      transform: translate3d(0, 0, 0) scaleX(1) rotate3d(0, 1, 0, -70deg);
+    }
+  
+    100% {
+      transform: translate3d(0, 0, 0) scaleX(1) rotate3d(0, 1, 0, 60deg);
+    }
+  }
+  
+  @keyframes right-wing-flap {
+    0% {
+      transform: translate3d(0, 0, 0) scaleX(-1) rotate3d(0, 1, 0, 60deg);
+    }
+  
+    50% {
+      transform: translate3d(0, 0, 0) scaleX(-1) rotate3d(0, 1, 0, -70deg);
+    }
+  
+    100% {
+      transform: translate3d(0, 0, 0) scaleX(-1) rotate3d(0, 1, 0, 60deg);
+    }
+  }
+  
+  /* CSS + animation for default / light mode theme */
+  @media (prefers-color-scheme: light) {
+    html {
+      background: #4a885c;
+      background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/bb/Beech_and_ferns_in_Gullmarsskogen.jpg");
+      background-size: cover;
+    }
+  
+    .rocket {
+      display: none;
+    }
+  
+    .butterfly {
+      display: block;
+      color:#000000;
+    }
+  }
+  
+  /* CSS + animation changes for prefers reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .eyeball,
+    .color {
+      animation: none;
+
+
+    }
+    .rocket,
+    .butterfly,
+    .butterfly_container,
+    .butterfly_container var.translate3d-1,
+    .butterfly_container figure.butterfly .wing.left,
+    .butterfly_container figure.butterfly .wing.right,
+    .butterfly_container var.rotate3d {
+      animation: none !important;
+      top: 30%;
+      right: 21%;
+      transform: none;
+    }
+  
+    .butterfly_container figure.butterfly .wing.right {
+      transform-origin: 50px 0px;
+      transform: scaleX(-1);
+    }
+  
+    .rocket {
+      right: 15%;
+      top: 30%;
+      transform: rotate(-50deg);
+    }
+  
+    .color {
+      fill: url(#grad1);
+    }
+  }
+  
+  /* misc styles */
+  .visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    color: red;
+  }
+  
+  .grid {
+    display: grid;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+  
+  html {
+    height: 100%;
+    max-height: 100%;
+    overflow-y: hidden;
+  }
+  
                   style="fill-rule:evenodd;clip-rule:evenodd;fill:#0600FF;stroke:#000000;stroke-width:10;stroke-linejoin:round;"
                   d="M5,5
                       c78.9,1.7,278.1,33.9,354.4,229.8c-26.3,5.1-90.7,67.8-100.9,102.6C64.4,238.2,9.2,81.3,5,5L5,5z" />
